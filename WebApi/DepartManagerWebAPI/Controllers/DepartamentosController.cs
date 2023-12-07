@@ -4,6 +4,8 @@ using DepartManagerWebAPI.Interfaces;
 using DepartManagerWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
+
+
 namespace DepartManagerWebAPI.Controllers
 {
     [ApiController]
@@ -26,6 +28,40 @@ namespace DepartManagerWebAPI.Controllers
             var departs = _mapper.Map<List<DepartamentoDto>>(_departamentoRepository.Listar());
 
             return Ok(departs);
+        }
+
+        [HttpPost]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(400)]
+        public IActionResult PostDeparts([FromBody] DepartamentoDto newDepart)
+        {
+            if (newDepart == null)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var depart_to_insert = _mapper.Map<Departamento>(newDepart);
+
+            if (depart_to_insert.Id != 0)
+                return BadRequest("Não é permitida a inserção de um valor no campo Id");
+
+            _departamentoRepository.CreateDepart(depart_to_insert);
+
+            return StatusCode(200, depart_to_insert);
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(200)]
+        [ProducesResponseType(404)]
+        public IActionResult DeleteDeparts(DepartamentoDto depart)
+        {
+            if (!_departamentoRepository.DepartExist(depart.Id))
+                return NotFound("Departamento não encontrado");
+
+            var depart_to_delete = _mapper.Map<Departamento>(depart);            
+            _departamentoRepository.DeleteDepart(depart_to_delete);
+
+            return StatusCode(200);
         }
     }
 }

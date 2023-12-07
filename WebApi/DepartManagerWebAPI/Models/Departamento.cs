@@ -10,7 +10,7 @@
         {
             this.Id = id;
             this.Nome = nome;
-            this.Sigla = sigla;
+            this.Sigla = sigla;;
         }
         public int Id { get; set; }
         public string Nome { get; set; }

@@ -16,7 +16,6 @@ namespace DepartManagerWebAPI.Repository
         {
             return __context.Departamentos.ToList();
         }
-
         public bool CreateDepart(Departamento departamento)
         {
             __context.Add(departamento);
@@ -29,10 +28,15 @@ namespace DepartManagerWebAPI.Repository
             return Save();
         }
 
-        public bool RemoveDepart(Departamento departamento)
+        public bool DeleteDepart(Departamento departamento)
         {
             __context.Remove(departamento);
             return Save();
+        }
+
+        public bool DepartExist(int id)
+        {
+            return __context.Departamentos.Any(c => c.Id == id);
         }
 
         public bool Save()

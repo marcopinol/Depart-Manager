@@ -9,6 +9,7 @@ namespace DepartManagerWebAPI.Mapping
         public MappingProfile()
         {
             CreateMap<Departamento, DepartamentoDto>();
+            CreateMap<DepartamentoDto, Departamento>(); 
         }
     }
 }
