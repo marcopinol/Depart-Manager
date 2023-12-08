@@ -1,0 +1,5 @@
+export interface Depart{
+    Id: number,
+    Nome: string,
+    Sigla: string
+}

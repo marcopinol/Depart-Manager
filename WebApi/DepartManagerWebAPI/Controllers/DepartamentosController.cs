@@ -5,7 +5,6 @@ using DepartManagerWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
-
 namespace DepartManagerWebAPI.Controllers
 {
     [ApiController]
@@ -50,18 +49,19 @@ namespace DepartManagerWebAPI.Controllers
             return StatusCode(200, depart_to_insert);
         }
 
-        [HttpDelete]
+        [HttpDelete("{departId}")]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult DeleteDeparts(DepartamentoDto depart)
+        public IActionResult DeleteDeparts(int departId)
         {
-            if (!_departamentoRepository.DepartExist(depart.Id))
+            if (!_departamentoRepository.DepartExist(departId))
                 return NotFound("Departamento não encontrado");
 
-            var depart_to_delete = _mapper.Map<Departamento>(depart);            
+            var depart_to_delete = _departamentoRepository.GetDepartamento(departId);
+
             _departamentoRepository.DeleteDepart(depart_to_delete);
 
-            return StatusCode(200);
+            return Ok();
         }
     }
 }

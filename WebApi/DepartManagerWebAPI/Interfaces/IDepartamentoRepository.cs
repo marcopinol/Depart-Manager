@@ -8,5 +8,6 @@ namespace DepartManagerWebAPI.Interfaces
         bool CreateDepart(Departamento depart);
         bool DeleteDepart(Departamento depart);
         bool DepartExist(int id);
+        Departamento GetDepartamento(int departId);  
     }
 }

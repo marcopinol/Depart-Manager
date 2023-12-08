@@ -1,6 +1,7 @@
 using DepartManagerWebAPI.Data;
 using DepartManagerWebAPI.Interfaces;
 using DepartManagerWebAPI.Repository;
+using Microsoft.AspNetCore.Builder;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<DataContext>();
+builder.Services.AddCors();
 
 var services = builder.Services;
 services.AddEndpointsApiExplorer();
@@ -27,6 +29,13 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseRouting();
+
+app.UseCors(c =>
+{
+    c.AllowAnyHeader();
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();  
+});
 
 //app.MapRazorPages();
 

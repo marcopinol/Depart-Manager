@@ -1,0 +1,23 @@
+<h1>Departamentos</h1>
+<a routerLink="">Home</a><br><br>
+<table>
+   <thead>
+      <tr>
+         <th scope="col">Id</th>
+         <th scope="col">Departamento</th>
+         <th scope="col">Sigla</th>
+         <th scope="col">Ações</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr *ngFor="let departamento of departamentos$ | async">
+         <th>{{departamento.id}}</th>
+         <td>{{departamento.nome}}</td>
+         <td>{{departamento.sigla}}</td>
+         <td><button (click)="deletarDepart(departamento.id)">Excluir</button> - <button routerLink="edit">Editar</button> - <button>Listar Funcionários</button></td>
+      </tr>                                                                                               
+   </tbody>
+</table>
+<br>
+<button routerLink="novo">Adicionar departamento</button> -
+<button (click)="obterDepartsCadastrados()">Listar departamentos</button>

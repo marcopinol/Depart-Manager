@@ -1,0 +1,10 @@
+<h1>Inclusão de novo departamento</h1>
+<a routerLink="">Home</a>
+<br><br>
+<div>
+    <input type="text" placeholder="Nome" [(ngModel)] = "nome">
+</div><br>
+<div>
+    <input type="text" placeholder="Sigla" [(ngModel)] = "sigla">
+</div><br>
+<button routerLink="/dashboard/departamentos" (click)="CadastrarDepart()">Salvar</button> - <button routerLink="/dashboard/departamentos">Voltar</button>
