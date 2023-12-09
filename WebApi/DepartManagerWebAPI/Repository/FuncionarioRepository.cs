@@ -1,7 +1,8 @@
 ﻿using DepartManagerWebAPI.Data;
+using DepartManagerWebAPI.Dto;
 using DepartManagerWebAPI.Interfaces;
 using DepartManagerWebAPI.Models;
-using Microsoft.EntityFrameworkCore.Diagnostics;
+
 
 namespace DepartManagerWebAPI.Repository
 {
@@ -28,6 +29,22 @@ namespace DepartManagerWebAPI.Repository
         public bool FuncionarioExiste(int id)
         {
             return __context.Funcionarios.Any(f => f.Id == id);
+        }
+
+        public bool DepartExists(int id)
+        {
+            return __context.Departamentos.Any(d => d.Id == id);
+        }
+
+        public Funcionario GetEmploye(int employeId)
+        {
+            return __context.Funcionarios.Where(f => f.Id == employeId).FirstOrDefault();
+        }
+
+        public bool DeleteEmploye(Funcionario employe)
+        {
+            __context.Remove(employe);
+            return Save();
         }
 
         public bool Save()
