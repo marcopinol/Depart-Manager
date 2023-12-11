@@ -20,7 +20,7 @@ namespace DepartManagerWebAPI.Repository
             return __context.Funcionarios.Where(f => f.departamentoId == departId).ToList();
         }
 
-        public bool RegisterFuncionario(int departId, Funcionario funcionario)
+        public bool RegisterFuncionario(Funcionario funcionario)
         {
             __context.Add(funcionario);
             return Save();

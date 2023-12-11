@@ -1,6 +1,6 @@
 export class Employe {
-    id!: Number;
+    id!: number;
     nome!: string;
-    RG!: string;
-    departId!: Number;
+    rg!: string;
+    departamentoId!: number;
 }

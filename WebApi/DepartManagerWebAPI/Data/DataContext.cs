@@ -11,6 +11,8 @@ namespace DepartManagerWebAPI.Data
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            //-- CODIGOS USADOS EM TESTES ANTERIORES ANTES DE TER BANCO DE DADOS --//
+
             //builder.Entity<FuncionarioDepartamento>()
               //  .HasKey(AD => new { AD.FuncionarioId, AD.DepartamentoId });
 

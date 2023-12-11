@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DepartamentoService } from '../services/departamento.service';
+import { funcionarioService } from '../services/funcionario.service';
 import { Depart } from '../Models/Depart';
 import { Observable } from 'rxjs';
 
@@ -9,12 +10,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./departamentos.component.css']
 })
 
-export class DepartamentosComponent{
+export class DepartamentosComponent implements OnInit {
   public departamentos$ = new Observable<Depart[]>();
 
-  constructor(private departamentoService: DepartamentoService){
+  constructor(private departamentoService: DepartamentoService, private funcionarioService: funcionarioService){
   }
-  
+
   obterDepartsCadastrados() {
     this.departamentos$ = this.departamentoService.GetDeparts();
   }
@@ -22,10 +23,11 @@ export class DepartamentosComponent{
     this.departamentoService.DeleteDepart(departId)
       .subscribe(_ => this.obterDepartsCadastrados());
   }
+  obterFuncionarios(departId: number){
+    this.funcionarioService.GetEmployes(departId);
+  }
 
-  public funcionarios = [
-    {id: 1, nome: 'Laura Ferreira', RG: '2163547126', departId: 1},
-    {id: 2, nome: 'Lucas da Rocha', RG: '2763578612', departId: 3},
-    {id: 5, nome: 'Pedro Alves', RG: '4582367123', departId: 2},
-  ]
+  ngOnInit(): void {
+    this.obterDepartsCadastrados();
+  }
 }

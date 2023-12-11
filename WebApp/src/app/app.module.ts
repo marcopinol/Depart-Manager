@@ -10,6 +10,9 @@ import { NovoComponent } from './novo/novo.component';
 import { FormsModule } from '@angular/forms';
 import { DepartamentoService } from './services/departamento.service';
 import { EditComponent } from './edit/edit.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { funcionarioService } from './services/funcionario.service';
+import { NovoFuncionarioComponent } from './novo-funcionario/novo-funcionario.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,9 @@ import { EditComponent } from './edit/edit.component';
     DepartamentosComponent,
     DashboardComponent,
     NovoComponent,
-    EditComponent
+    EditComponent,
+    FuncionariosComponent,
+    NovoFuncionarioComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +30,7 @@ import { EditComponent } from './edit/edit.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [DepartamentoService, DepartamentosComponent],
+  providers: [DepartamentoService, DepartamentosComponent, funcionarioService, FuncionariosComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

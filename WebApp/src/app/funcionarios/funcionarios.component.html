@@ -1,0 +1,29 @@
+<h1>Listagem de Funcionários</h1>
+<button routerLink="" class="Home">Home</button>
+<br><br>
+<div>
+   <input type="number" name="input" placeholder="Id do Departamento" [(ngModel)] = "departId">
+</div><br>
+<button (click)="obterFuncionariosDepart(departId)">Checar</button> - 
+<button routerLink="/dashboard/departamentos">Voltar</button> - 
+<button routerLink="novo">Adicionar Funcionario</button>
+<div *ngIf="departId != null">
+   <table>
+      <thead>
+         <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Rg</th>
+            <th scope="col">Ações</th>
+         </tr>
+      </thead>
+      <tbody>
+         <tr *ngFor="let funcionario of funcionarios$ | async">
+            <th>{{funcionario.id}}</th>
+            <td>{{funcionario.nome}}</td>
+            <td>{{funcionario.rg}}</td>
+            <td><button (click)="deletarFuncionario(funcionario.id)">Excluir</button> - <button>Editar</button></td>
+         </tr>                                                                                               
+      </tbody>
+   </table><br>
+</div>

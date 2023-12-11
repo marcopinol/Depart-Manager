@@ -32,10 +32,10 @@ namespace DepartManagerWebAPI.Controllers
             return Ok(employes);
         }
 
-        [HttpPost("{departId}")]
+        [HttpPost]
         [ProducesResponseType(200)]
         [ProducesResponseType(404)]
-        public IActionResult CreateEmployes(int departId, [FromBody] Funcionario funcionario)
+        public IActionResult CreateEmployes( [FromBody] Funcionario funcionario)
         {
             if (funcionario == null)
                 return BadRequest(ModelState);
@@ -43,12 +43,10 @@ namespace DepartManagerWebAPI.Controllers
             if (funcionario.Id != 0)
                 funcionario.Id = 0;
 
-            funcionario.departamentoId = departId;
-
-            if (!_funcionarioRepository.DepartExists(departId))
+            if (!_funcionarioRepository.DepartExists(funcionario.departamentoId))
                 return NotFound("Depart inexistente");
                 
-            var employe = _funcionarioRepository.RegisterFuncionario(departId, funcionario);
+            var employe = _funcionarioRepository.RegisterFuncionario(funcionario);
 
             return Ok(employe);
         }

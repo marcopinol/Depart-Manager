@@ -6,7 +6,7 @@ namespace DepartManagerWebAPI.Interfaces
 {
     public interface IFuncionarioRepository
     {
-        bool RegisterFuncionario(int departId, Funcionario employe);
+        bool RegisterFuncionario(Funcionario employe);
         List<Funcionario> ListarFuncionarios(int departId);
         bool FuncionarioExiste(int id);
         bool DepartExists(int departId);

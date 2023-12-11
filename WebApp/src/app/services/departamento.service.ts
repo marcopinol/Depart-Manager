@@ -1,6 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core"; 
-import { Observable } from "rxjs";
 import { Depart } from "../Models/Depart";
 
 @Injectable({
@@ -23,5 +22,9 @@ export class DepartamentoService{
 
     DeleteDepart(departId: number){
         return this.httpClient.delete<void>(`${this.urlApi}/${departId}`);
+    }
+
+    DepartExists(departId: number){
+        return this.httpClient.get<string>(`${this.urlApi}/${departId}`)
     }
 }

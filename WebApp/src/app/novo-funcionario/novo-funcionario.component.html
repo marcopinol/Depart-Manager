@@ -1,0 +1,14 @@
+<h1>Inclusão de novo funcionario</h1>
+<button routerLink="">Home</button>
+<br><br>
+<div>
+    <input type="text" placeholder="Nome" [(ngModel)] = "nome">
+</div><br>
+<div>
+    <input type="text" placeholder="Rg" [(ngModel)] = "RG">
+</div><br>
+<div>
+    <input type="text" placeholder="Id do Departamento" [(ngModel)] = "departId">
+</div><br>
+<button (click)="CadastrarFuncionario()">Salvar</button> - 
+<button routerLink="/dashboard/departamentos/funcionarios">Voltar</button> 

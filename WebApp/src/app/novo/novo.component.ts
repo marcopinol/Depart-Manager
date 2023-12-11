@@ -13,6 +13,7 @@ export class NovoComponent {
   id!:number
   nome = ''
   sigla = ''
+  departamentoId!:number
 
   constructor(private departService: DepartamentoService, private depart: DepartamentosComponent){
   }
