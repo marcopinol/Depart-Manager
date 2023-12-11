@@ -5,6 +5,6 @@ Construído com __ASP.NET Core 6__, __Angular v15.0.5__, __Node.js v18.17.1__ e 
 
 ## Instalação
 
-* Recomendavel usar as mesmas versões citadas anteriormente para evitar erros causados por incompatibilidade de versões
+* Recomendavel usar as mesmas versões citadas anteriormente para evitar erros causados por incompatibilidade de versões (exceto Node que tem retrocompatibilidade) 
 
 * Será necessário configurar a string de login no arquivo DataContext.cs para poder integrar a API ao banco de dados
